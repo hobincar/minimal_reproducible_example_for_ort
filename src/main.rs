@@ -27,13 +27,16 @@ fn func() -> OrtResult<OrtOwnedTensor<'static, f32, Dim<IxDynImpl>>> {
     let output: OrtOwnedTensor<f32, _> = output[0].try_extract()?;
     println!("[1] output: {:?}", output);
 
-    Ok(output)
+    let output = Ok(output);
+    println!("[2] output: {:?}", output);
+
+    output
 }
 
 
 fn main() {
     let output = func();
 
-    println!("[2] output: {:?}", output.unwrap());
+    println!("[3] output: {:?}", output);
 }
 
